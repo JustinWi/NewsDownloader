@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>A developers guide to getting press</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Bootstrap -->
+		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<link href="css/index.css" rel="stylesheet">
+		<link href="css/jquery.share.css" rel="stylesheet">
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/bootstrap-progressbar.min.js"></script>
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		<script src="../../assets/js/html5shiv.js"></script>
+		<script src="../../assets/js/respond.min.js"></script>
+		<![endif]-->
+
+		<script src="https://www.google.com/jsapi"></script>
+		<script src="js/index.js"></script>
+		<script src="js/table2CSV.js"></script>
+		<script src="js/jquery.share.js"></script>
+
+	</head>
+	<body>
+
+		<div class="container">
+			<div class="jumbotron">
+				<h1>Google News Downloader</h1>
+				<h2>by <a href="http://www.CustomerDevLabs.com" target="_blank">Customer Dev Labs</a></h2>
+
+				<hr/>
+
+				<p class="lead">Uses Google News API to look for news stories worldwide, and in the 10 largest US cities. Edit source to change the search locations. <a href="http://wp.me/p2pmCq-gA" target="_blank">Full instructions here</a>.</p>
+			</div>
+			<hr/>
+			<h2>Step 1. Search for news related to your company:</h2>
+			<div class="row">
+				<span class="col-lg-3"></span>
+				<input id="news-search" type="text" class="input-lg col-lg-5" placeholder="Google News Search">
+				<button id="search-button" class="btn btn-lg btn-primary">
+					Search
+				</button>
+			</div>
+			<hr/>
+			<h2>Step 2. Download results</h2>
+			<div id="progress-container" class="progress" style='height:40px'>
+				<a id="download-link">
+				<div id="progress-bar" class="progress-bar progress-bar" style='font-size:1.5em; overflow:hidden; padding-top:5px'>
+					Testing
+				</div> </a>
+			</div>
+			<div class="panel panel-default" style="height: 300px; overflow: auto;">
+				<div class="panel-body">
+					<table id="results-table" class="table table-striped table-fixed table-hover">
+						<thead>
+							<tr>
+								<th>URL</th>
+								<th>Title</th>
+								<th>Description</th>
+								<!-- <th>Region</th> -->
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+
+				</div>
+			</div><h2>Step 3. Upload to <a href="http://wp.me/p2pmCq-gA#step3">Mechanical Turk</a> to get each reporter's email address</h2>
+			<hr/>
+			<h2>Step 4. Help your friends get press:</h2>
+			<div class="row" style="padding-bottom:100px">
+				<span class="col-lg-5"></span>
+				<div id="sharing"></div>
+			</div>
+		</div>
+	</body>
+</html>
