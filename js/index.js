@@ -4,8 +4,9 @@ google.load('search', '1');
 
 var newsSearch;
 
-const STATE_MAX = 0;
-const CITIES_MAX = 10;
+// Update these values to determine how many states and/or cities are searched for news
+const STATE_MAX = 0; // don't look in any states
+const CITIES_MAX = 10; // look in the top 10 largest cities
 
 const cities = [ "New York, New York", "Los Angeles, California",
 		"Chicago, Illinois", "Houston, Texas", "Philadelphia, Pennsylvania",
@@ -108,7 +109,7 @@ function searchComplete() {
 			row.appendChild(urlCol);
 			row.appendChild(titleCol);
 			row.appendChild(contentCol);
-//			row.appendChild(stateCol);
+			row.appendChild(stateCol);
 
 			$('#results-table').append(row);
 		}
@@ -187,20 +188,16 @@ function progressComplete()
 	$("#progress-container").removeClass("active");
 	$("#progress-container").removeClass("progress-striped");
 	
-	$("#progress-bar").click(null);
-	
 	if (totalArticles > 0)
 	{		
 		$("#download-link").attr('href', getCsvUrl());
 		$("#download-link").attr('download', getCsvName());
 		
-//		$("#progress-bar").click(function () {
-//			$("#download-link").click();
-//		});		
-		
 		$("#progress-bar").html('Found ' + totalArticles + ' "' + query + '" articles. Click to download.');
 		$("#progress-bar").addClass("btn");
 		$("#progress-bar").addClass("btn-primary");
+		
+		$("#progress-bar").click(function() {openDialog();});
 		
 		$("#progress-container").css('cursor', 'pointer');
 	}
@@ -211,16 +208,40 @@ function progressComplete()
 	}
 }
 
+function openDialog() {
+	bootbox.dialog({
+		  message: "<b>We do this stuff all the time.</b><p/>Subscribe to the <a href='http://customerdevlabs.com' target='_blank'>Customer Dev Labs</a> blog, or follow us on Twitter so you hear about the next one.",
+		  title: "<h2 style='text-align:center'>Like this hack?</h2>",
+		  buttons: {
+		    success: {
+		      label: "Subscribe via Email",
+		      className: "btn-success",
+		      callback: function() {
+		    	  window.open('http://feedburner.google.com/fb/a/mailverify?uri=CustomerDevLabs&loc=en_US');
+		      }
+		    },
+		    danger: {
+		      label: "Subscribe via RSS",
+		      className: "btn-danger",
+		      callback: function() {
+		    	  window.open('http://feeds.feedburner.com/CustomerDevLabs');
+		      }
+		    },
+		    main: {
+		      label: "Follow on Twitter",
+		      className: "btn-primary",
+		      callback: function() {
+		    	  window.open('https://twitter.com/intent/user?screen_name=CustomerDevLabs');
+		      }
+		    }
+		  }
+		});
+}
+
 function getCsvUrl() {
     var csv = $("#results-table").table2CSV({delivery:'value'});
     return 'data:text/csv;charset=ASCII,' + encodeURIComponent(csv);
     
-//    a = document.createElement('a');
-//    //a.href =  'data:text/csv;charset=UTF-8,' + encodeURIComponent(csv); 
-//    a.href =  'http://google.com';
-//    a.download = "word.csv";
-//    
-//    a.click();
 }
 
 function getCsvName() {
@@ -267,47 +288,6 @@ $(document).ready(function() {
 		}
 	});
 	
-//	$('#twitter').sharrre({
-//		  share: {
-//		    twitter: true
-//		  },
-//		  template: '<a class="box" href="#"><div class="count" href="#">{total}</div><div class="share"><span></span>Tweet</div></a>',
-//		  enableHover: false,
-//		  enableTracking: true,
-//		  urlCurl: '',
-//		  buttons: { twitter: {via: 'CustomerDevLabs'}},
-//		  click: function(api, options){
-//		    api.simulateClick();
-//		    api.openPopup('twitter');
-//		  }
-//		});
-//		$('#facebook').sharrre({
-//		  share: {
-//		    facebook: true
-//		  },
-//		  template: '<a class="box" href="#"><div class="count" href="#">{total}</div><div class="share"><span></span>Like</div></a>',
-//		  enableHover: false,
-//		  enableTracking: true,
-//		  urlCurl: '',
-//		  click: function(api, options){
-//		    api.simulateClick();
-//		    api.openPopup('facebook');
-//		  }
-//		});
-//		$('#googleplus').sharrre({
-//		  share: {
-//		    googlePlus: true
-//		  },
-//		  template: '<a class="box" href="#"><div class="count" href="#">{total}</div><div class="share"><span></span>Google+</div></a>',
-//		  enableHover: false,
-//		  enableTracking: true,
-//		  urlCurl: '',
-//		  click: function(api, options){
-//		    api.simulateClick();
-//		    api.openPopup('googlePlus');
-//		  }
-//		});
-	
 	$('#sharing').share({
 		networks: ['twitter','googleplus','facebook','linkedin'],
 		urlToShare: 'http://wp.me/p2pmCq-gA'
@@ -320,4 +300,10 @@ $(document).ready(function() {
 //	
 //	  ga('create', 'UA-44161122-1', 'customerdevlabs.com');
 //	  ga('send', 'pageview');
+	
+	$('#news-search').keypress(function (e) {
+		  if (e.which == 13) {
+		    $('#search-button').click();
+		  }
+		});
 });
