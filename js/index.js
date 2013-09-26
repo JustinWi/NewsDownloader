@@ -206,6 +206,9 @@ function progressComplete()
 		$("#progress-bar").html('No articles found');
 		$("#progress-container").css('cursor', 'auto');		
 	}
+	
+	_trackEvent("News Search", "Search ended", "Query", query);
+	_trackEvent("News Search", "Search ended", "Results", totalArticles);
 }
 
 function openDialog() {
@@ -236,6 +239,8 @@ function openDialog() {
 		    }
 		  }
 		});
+	
+	_trackEvent("News Search", "File downloaded", "Query", query);
 }
 
 function getCsvUrl() {
@@ -268,6 +273,8 @@ function fireAway() {
 	articlesFound = {};
 	resetProgress();
 
+	_trackEvent("News Search", "Search started", "Query", query);
+	
 	// Specify search quer(ies)
 	newsSearch.execute(query);
 }
