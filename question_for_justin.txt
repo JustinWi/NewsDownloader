@@ -2,7 +2,7 @@ Hi Justin,
 
 Any interest in moving to San Francisco?
 
-I saw your GoogleNewsDownloader project and want to get you out here.
+I saw your NewsDownloader project and want to get you out here.
 
 A few of us founders have banded together to find talented engineers and, if they're inclined, help them move out here. We're hoping you're one of those engineers.
 
@@ -15,4 +15,4 @@ justin@customerdevlabs.com
 
 PS - More about me www.customerdevlabs.com
 
-PPS - If you're not interested, you can ignore this and please accept my apology. I won't bother you again.
+PPS - If you're not interested, you can ignore this. My apologies for the intrusion, I won't bother you again.
