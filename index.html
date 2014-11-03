@@ -13,6 +13,8 @@
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/bootstrap-progressbar.min.js"></script>
+		<script src="js/jquery.bsAlerts.min.js"></script>
+		<script src="js/jquery.cookie.js"></script>
 
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
@@ -24,22 +26,22 @@
 		<script src="js/index.js"></script>
 		<script src="js/table2CSV.js"></script>
 		<script src="js/jquery.share.js"></script>
+		<script src="js/jquery.ajaxchimp.js"></script>
 		<script src="js/bootbox.min.js"></script>
-		
-		
+
 		<script type="text/javascript">
-		
+
 		  var _gaq = _gaq || [];
 		  _gaq.push(['_setAccount', 'UA-44161122-1']);
 		  _gaq.push(['_trackPageview']);
-		
+
 		  (function() {
 		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 		  })();
-		
-		</script>		
+
+		</script>
 	</head>
 	<body>
 
@@ -56,6 +58,8 @@
 					Uses Google News API to look for news stories worldwide, and in the 10 largest US cities. Edit source to change the search locations. <a href="http://wp.me/p2pmCq-gA" target="_blank">Full instructions here</a>.
 				</p>
 			</div>
+			<div data-alerts="alerts"></div>
+			<a id="download-link" style="display:none"><div class="alert alert-info" role="alert">Your CSV is Ready. Download Here.</div></a>
 			<h3>Step 1. Search for news related to your company:</h3>
 			<div class="row" style="padding-top:10px">
 				<span class="col-lg-3"></span>
@@ -66,16 +70,14 @@
 			</div>
 			<div class="row" style="padding-top:15px; text-align:center">
 				<p><em>Examples:</em> competitors, problem you're solving, related products, customer segment, etc.</p>
-			</div>			
-			
+			</div>
+
 			<hr/>
 			<h3>Step 2. Download the results</h3>
 			<div id="progress-container" class="progress" style='height:40px'>
-				<a id="download-link">
-					<div id="progress-bar" class="progress-bar progress-bar" style='font-size:1.5em; overflow:hidden; padding-top:5px'>
-						Testing
-					</div> 
-				</a>
+				<div id="progress-bar" class="progress-bar progress-bar" style='font-size:1.5em; overflow:hidden; padding-top:5px'>
+					Testing
+				</div>
 			</div>
 			<div class="panel panel-default" style="height: 300px; overflow: auto;">
 				<div class="panel-body">
@@ -100,5 +102,35 @@
 				<div id="sharing"></div>
 			</div>
 		</div>
+
+<div class="modal fade" id="subscribeModal" tabindex="-1" role="dialog" aria-labelledby="subscribeModal" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+      				<h2 class="modal-title" id="myModalTitle">Searching! While you wait...</h2>
+            </div>
+            <div class="modal-body">
+							<h3 class="modal-title" id="myModalHeader">Want my Next Free Hack?</h3>
+							<h5>Want to "talk" to your todo list? Get my next hack as soon as it's ready!</h5>
+							<center>
+								<iframe width="100%" height="360" src="http://www.youtube.com/embed/l91SsGcAprs?rel=0" frameborder="0" allowfullscreen></iframe>
+							</center>
+
+              <form id="mc-form">
+								<h3>Where Should I Send it?</h3>
+					      <input id="mc-email" type="email" placeholder="your@email.com" class="form-control">
+					      <label for="mc-email"></label>
+					    </form>
+							<h3>Bonus Blog Posts</h3>
+							<h5>I'll also send you monthly-ish <a href="http://customerdevlabs.com" target="_blank">customer development</a> blog posts to help your startup get traction. You can always kill those if they're ever not helpful.</h5>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="cancelButton">No, free hacks are lame</button>
+              <button type="button" class="btn btn-primary" id="subscribeButton">Yes, Send me Free Hacks</button>
+						</div>
+        </div>
+    </div>
+</div>
+
 	</body>
 </html>
