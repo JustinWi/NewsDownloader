@@ -58,8 +58,6 @@
 					Uses Google News API to look for news stories worldwide, and in the 10 largest US cities. Edit source to change the search locations. <a href="http://wp.me/p2pmCq-gA" target="_blank">Full instructions here</a>.
 				</p>
 			</div>
-			<div data-alerts="alerts"></div>
-			<a id="download-link" style="display:none"><div class="alert alert-info" role="alert">Your CSV is Ready. Download Here.</div></a>
 			<h3>Step 1. Search for news related to your company:</h3>
 			<div class="row" style="padding-top:10px">
 				<span class="col-lg-3"></span>
@@ -74,11 +72,16 @@
 
 			<hr/>
 			<h3>Step 2. Download the results</h3>
+			<div data-alerts="alerts"></div>
+
 			<div id="progress-container" class="progress" style='height:40px'>
 				<div id="progress-bar" class="progress-bar progress-bar" style='font-size:1.5em; overflow:hidden; padding-top:5px'>
 					Testing
 				</div>
 			</div>
+			<div id="downloadCanceled" class="alert alert-danger" role="alert" style="display:none"><b>Download canceled.</b> Please <a href="#" onclick="downloadDialog(); return false;">subscribe</a> to get your results.</div>
+			<a id="download-link" style="display:none"><div class="alert alert-info" role="alert">Your CSV is Ready. Download Here.</div></a>
+
 			<div class="panel panel-default" style="height: 300px; overflow: auto;">
 				<div class="panel-body">
 					<table id="results-table" class="table table-striped table-fixed table-hover">
