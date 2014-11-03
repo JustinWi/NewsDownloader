@@ -349,6 +349,8 @@ $(document).ready(function() {
 				$("#subscribeModal").modal('hide');
 
 				if (resp.result === 'success') {
+					_gaq.push(['_trackEvent', "New Subscriber", "New Subscriber", "Email", $('#mc-email').val()]);
+
 					$(document).trigger("add-alerts", {
 					  message: "Success! Check your inbox and confirm your subscription to get the next hack.",
 					  priority: "success"
