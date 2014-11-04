@@ -347,7 +347,7 @@ $(document).ready(function() {
 		});
 
 	$('#mc-form').ajaxChimp({
-		url: 'http://CustomerDevLabs.us6.list-manage.com/subscribe/post?u=7de22f15c9e97df7b49df664f&amp;id=25f38c75ad',
+		url: 'http://CustomerDevLabs.us6.list-manage.com/subscribe/post?u=7de22f15c9e97df7b49df664f&id=25f38c75ad&group%5B10121%5D%5B128%5D=128',
 		callback: function(resp) {
 			if (resp.result === 'success' || resp.msg.indexOf("already") >= 0) {
 				$("#subscribeModal").modal('hide');
