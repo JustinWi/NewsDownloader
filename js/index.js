@@ -7,7 +7,7 @@ var downloadModal = false;
 
 // Update these values to determine how many states and/or cities are searched for news
 const STATE_MAX = 0; // don't look in any states
-const CITIES_MAX = 10; // look in the top 10 largest cities
+const CITIES_MAX = 25; // look in the top 25 largest cities
 
 const cities = [ "New York, New York", "Los Angeles, California",
 		"Chicago, Illinois", "Houston, Texas", "Philadelphia, Pennsylvania",
